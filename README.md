@@ -4,6 +4,7 @@ A repository for voice chat bots
 ## openai_voice_chat_bot
 A Voice & Chat Bot 🎙️ backed by OpenAI, Streamlit and LangChain
 
+Find the story in Medium [An OpenAI Voice & Chat Bot](https://medium.com/@yuxiaojian/an-openai-voice-chat-bot-b4cbe553f3ca)
 
 ### Run Locally
 1. You need to have an OpenAI API key. You can  get it from [here](https://platform.openai.com/account/api-keys). Two ways to add your API key to the project:

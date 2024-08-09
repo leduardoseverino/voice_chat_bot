@@ -112,8 +112,9 @@ if audio_bytes is not None:
         with open(file_path, "wb") as f:
             f.write(audio_bytes)
 
-        # Reset the buffer position to the beginning
+        # STT
         transcript = speech_to_text(file_path)
+        os.remove(file_path)
         if transcript:
             st.chat_message("human").write(transcript)
             msgs.add_user_message(transcript)
