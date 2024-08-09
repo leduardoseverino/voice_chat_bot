@@ -47,3 +47,8 @@ openssl req -newkey rsa:2048 -new -nodes -x509 -days 365 -subj "/CN=streamlit" -
 
 ```
 
+### Credits
+- [llm-voice-bot](https://github.com/iamaziz/llm-voice-bot)
+- [openai-conversational-voice-chatbot](https://github.com/sulaiman-shamasna/openai-conversational-voice-chatbot)
+- [local-talking-llm](https://github.com/vndee/local-talking-llm.git)
+
