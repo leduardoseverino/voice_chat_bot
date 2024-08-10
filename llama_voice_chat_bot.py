@@ -50,7 +50,7 @@ def transcribe_audio(audio_file):
 
     # Options for the transcribe model ["base", "tiny", "small", "medium", "large"]
     model = load_whisper_model("base")
-    result = model.transcribe(audio_file)
+    result = model.transcribe(audio_file, fp16=False)
     return result["text"]
 
 # Function for text-to-speech
@@ -60,12 +60,6 @@ def text_to_speech(text, lang='en'):
     tts.write_to_fp(mp3_fp)
     return mp3_fp.getvalue()
 
-# Play audio
-def autoplay_audio(file_path: str):
-    with open(file_path, "rb") as f:
-        audio_bytes = f.read()
-
-    st.audio(audio_bytes, format="audio/mpeg", autoplay=True)
 
 # Get LLM response
 def get_llm_response(input: str) -> str:
@@ -117,6 +111,7 @@ if st.session_state.langchain_messages[-1].type != "ai":
         st.write(response)
         with st.spinner("Generating audio response..."):
             tts_audio = text_to_speech(response)
+            # auto-play audio
             st.audio(tts_audio, format="audio/mpeg", autoplay=True)
 
 

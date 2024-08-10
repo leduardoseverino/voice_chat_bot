@@ -42,6 +42,8 @@ streamlit run openai_voice_chat_bot.py
 
 
 ## Llama Voice Chat Bot
+Find the Medium story [Build a Voice & Chat bot with Llama](https://medium.com/@yuxiaojian/build-a-voice-chat-bot-with-llama-aa0abf8437f5)
+
 Use the same framework as `openai_voice_chat_bot` but with different engines:
 - LLM: Ollama 3.1
 - STT: Whisper
@@ -52,7 +54,7 @@ Use the same framework as `openai_voice_chat_bot` but with different engines:
 streamlit run llama_voice_chat_bot.py
 ```
 
-## Run remotely
+## Access the app remotely
 The audio recording works with HTTPS (not HTTP). You will need a certificate and key to run the streamlit app in HTTPS. 
 
 ```bash
@@ -71,9 +73,9 @@ openssl req -newkey rsa:2048 -new -nodes -x509 -days 365 -subj "/CN=streamlit" -
 
 ```
 
+Then you can start the app and access it remotely via HTTPS. Use IP address if the client and server are in the same network `https://192.168.1.100:8443`
 
 ## Credits
 - [llm-voice-bot](https://github.com/iamaziz/llm-voice-bot)
 - [openai-conversational-voice-chatbot](https://github.com/sulaiman-shamasna/openai-conversational-voice-chatbot)
 - [local-talking-llm](https://github.com/vndee/local-talking-llm.git)
-
