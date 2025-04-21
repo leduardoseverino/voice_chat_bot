@@ -10,24 +10,24 @@ import tempfile
 from gtts import gTTS
 import io
 
-st.set_page_config(page_title="Llamma Voice & Chat Bot", page_icon="🦙")
-st.title("Llamma Voice & Chat Bot 🦙")
+st.set_page_config(page_title="Ollama Llama 3.2 c/ voz", page_icon="🦙")
+st.title("Agente Chat c/ 🦙")
 
 def llm_selector():
-    models=["llama3.1" ]
+    models=["llama3.2"]
     with st.sidebar:
         return st.selectbox("Model", models)
 
 # Set up memory
 msgs = StreamlitChatMessageHistory(key="langchain_messages")
 if len(msgs.messages) == 0:
-    msgs.add_ai_message("How can I help you?")
+    msgs.add_ai_message("Como posso te ajudar?")
 
 
 # Set up the LangChain, passing in Message History
 prompt = ChatPromptTemplate.from_messages(
     [
-        ("system", "You are an AI chatbot having a conversation with a human."),
+        ("system", "Você é um assistente virtual com inteligência artificial interagindo com um humano por meio do WhastApp e utilize respostas curtas"),
         MessagesPlaceholder(variable_name="history"),
         ("human", "{question}"),
     ]
@@ -54,7 +54,7 @@ def transcribe_audio(audio_file):
     return result["text"]
 
 # Function for text-to-speech
-def text_to_speech(text, lang='en'):
+def text_to_speech(text, lang='pt'):
     tts = gTTS(text=text, lang=lang)
     mp3_fp = io.BytesIO()
     tts.write_to_fp(mp3_fp)
@@ -82,7 +82,6 @@ with st.sidebar:
 if prompt := st.chat_input():
     st.chat_message("human").write(prompt)
     msgs.add_user_message(prompt)
-    audio_bytes = None
 
 # If audio bytes are available, transcribe and add to chat history
 if audio_bytes is not None:
@@ -105,7 +104,7 @@ if audio_bytes is not None:
 if st.session_state.langchain_messages[-1].type != "ai":
     with st.chat_message("ai"):
         #st.write(st.session_state.langchain_messages[-1].content)
-        with st.spinner("Thinking🤔..."):
+        with st.spinner("Pensando🤔..."):
             response = get_llm_response(st.session_state.langchain_messages[-1].content)
 
         st.write(response)
